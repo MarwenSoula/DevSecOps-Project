@@ -25,7 +25,7 @@ pipeline {
     }
     stage ('Depencencies Check'){
       steps {
-        sh 'dependency-check.sh --project check_dep --scan . --format "XML" --out dependency-check-report.xml'
+        sh './dependency-check.sh --project check_dep --scan . --format "XML" --out dependency-check-report.xml'
       }
     }
     
