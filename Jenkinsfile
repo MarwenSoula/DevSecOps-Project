@@ -18,6 +18,10 @@ pipeline {
           sh 'mvn test  -Dmaven.test.failure.ignore=true'
       }   
     }
-    
+    stage ('Secret Detection'){
+      steps {
+        sh 'docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/MarwenSoula/DevSecOps-Project --json > trufflehog_report.json'
+      }
+    }
   }
 }
