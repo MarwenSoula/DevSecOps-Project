@@ -25,7 +25,7 @@ pipeline {
     }
     stage ('Depencencies Check'){
       steps {
-        sh 'dependency-check.sh --project check_dep --scan . --format "XML" --out dependency-check-report.xml'
+        dependencyCheck additionalArguments: '--format XML', odcInstallation: 'DP-Check'
       }
     }
     
