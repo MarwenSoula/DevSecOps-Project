@@ -23,5 +23,11 @@ pipeline {
         sh 'docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/MarwenSoula/DevSecOps-Project --json > trufflehog_report.json'
       }
     }
+    stage ('Depencencies Check'){
+      steps {
+        sh 'dependency-check.sh --project check_dep --scan /var/lib/jenkins/workspace/DevSecOps --format "XML" --out dependency-check-report.xml'
+      }
+    }
+    
   }
 }
