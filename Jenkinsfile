@@ -25,7 +25,7 @@ pipeline {
     }
     stage ('Depencencies Check'){
       steps {
-        sh 'dependency-check.sh --project check_dep --scan /var/lib/jenkins/workspace/DevSecOps --format "XML" --out dependency-check-report.xml'
+        sh '/var/lib/jenkins/workspace/DevSecOps/dependency-check.sh --project check_dep --scan /var/lib/jenkins/workspace/DevSecOps --format "XML" --out dependency-check-report.xml'
       }
     }
     
