@@ -49,7 +49,7 @@ pipeline {
      steps {
        script{
          sh "docker rmi ${REPO_NAME}/${DEPARTMENT_IMAGE}:1.2 || true "
-         sh "docker  build -f department-service/Dockerfile -t ${REPO_NAME}/${DEPARTMENT_IMAGE}:1.2 . "
+         sh "docker  build -f department-service/Dockerfile -t ${REPO_NAME}/${DEPARTMENT_IMAGE}:1.2 department-service  "
        
       } 
      }
