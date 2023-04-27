@@ -6,7 +6,10 @@ pipeline {
   
   environment {
       DEPARTMENT_IMAGE = "deparment-service"
-      REPO_NAME = "soulamarwen"
+      EMPLOYEE_IMAGE = "employee-service"
+      ORGANIZATION_IMAGE = "organization-service"
+      GATEWAY_IMAGE = "gateway-service"
+      DOCKER_REPO = "soulamarwen"
   }
 
   stages {
@@ -48,9 +51,19 @@ pipeline {
    stage ('Docker Build ') {
      steps {
        script{
-         sh "docker rmi ${REPO_NAME}/${DEPARTMENT_IMAGE}:1.2 || true "
-         sh "docker  build -f department-service/Dockerfile -t ${REPO_NAME}/${DEPARTMENT_IMAGE}:1.2 department-service  "
-       
+         sh "docker rmi ${DOCKER_REPO}/${DEPARTMENT_IMAGE}:1.2 || true "
+         sh "docker  build -f department-service/Dockerfile -t ${DOCKER_REPO}/${DEPARTMENT_IMAGE}:1.2 department-service  "
+         
+         sh "docker rmi ${DOCKER_REPO}/${EMPLOYEE_IMAGE}:1.2 || true "
+         sh "docker  build -f employee-service/Dockerfile -t ${DOCKER_REPO}/${EMPLOYEE_IMAGE}:1.2 employee-service  "
+         
+         sh "docker rmi ${DOCKER_REPO}/${ORGANIZATION_IMAGE}:1.2 || true "
+         sh "docker  build -f organization-service/Dockerfile -t ${DOCKER_REPO}/${ORGANIZATION_IMAGE}:1.2 organization-service  " 
+         
+         sh "docker rmi ${DOCKER_REPO}/${GATEWAY_IMAGE}:1.2 || true "
+         sh "docker  build -f gateway-service/Dockerfile -t ${DOCKER_REPO}/${GATEWAY_IMAGE}:1.2 gateway-service  " 
+         
+        
       } 
      }
    }    
