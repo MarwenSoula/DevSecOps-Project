@@ -40,6 +40,11 @@ pipeline {
         }
       }
     }
+    stage ('Build Maven') {
+      steps {
+          sh 'mvn clean package'    
+       }
+    }
    stage ('Docker Build ') {
      steps {
        script{
