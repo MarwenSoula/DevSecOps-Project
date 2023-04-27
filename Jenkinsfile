@@ -66,7 +66,16 @@ pipeline {
         
       } 
      }
-   }    
+   }  
+   stage ('Scan Docker Image Trivy') {
+      steps {
+          sh " trivy image --format json -o trivy-${DEPARTMENT_IMAGE}.json   ${DOCKER_REPO}/${DEPARTMENT_IMAGE}:1.2 "
+          sh " trivy image --format json -o trivy-${EMPLOYEE_IMAGE}.json     ${DOCKER_REPO}/${EMPLOYEE_IMAGE}:1.2 "
+          sh " trivy image --format json -o trivy-${ORGANIZATION_IMAGE}.json ${DOCKER_REPO}/${ORGANIZATION_IMAGE}:1.2 "
+          sh " trivy image --format json -o trivy-${GATEWAY_IMAGE}.json   ${DOCKER_REPO}/${GATEWAY_IMAGE}:1.2 "
+          
+      }
+    }
  
   }
 }
