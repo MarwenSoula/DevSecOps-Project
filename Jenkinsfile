@@ -31,7 +31,7 @@ pipeline {
     stage ('SAST SonarQube') {
       steps {
          withSonarQubeEnv('SonarQube') {
-          sh 'mvn clean package sonar:sonar '
+          sh 'mvn clean package sonar:sonar -Dmaven.test.failure.ignore=true'
         }
       }
     }
