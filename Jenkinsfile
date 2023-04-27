@@ -28,6 +28,12 @@ pipeline {
         dependencyCheck additionalArguments: '--format XML', odcInstallation: 'DP-Check'
       }
     }
-    
+    stage ('SAST SonarQube') {
+      steps {
+         withSonarQubeEnv('SonarQube') {
+          sh 'mvn clean package sonar:sonar '
+        }
+      }
+    }
   }
 }
