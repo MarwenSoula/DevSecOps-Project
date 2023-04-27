@@ -79,8 +79,8 @@ pipeline {
    stage ('DockerHub Push Image') {
       steps {
          script{
-            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', passwordVariable: 'DOCKERHUB-PWD', usernameVariable: 'DOCKERHUB-ID')]) {
-              sh "docker login --username $DOCKERHUB-ID  --password $DOCKERHUB-PWD " 
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DOCKERHUB', passwordVariable: 'DOCKERHUB-PWD', usernameVariable: 'DOCKERHUB-ID')]) {
+              sh "docker login --username "soulamarwen"  --password "Soula&20403411" 
               }
               sh "docker  push  ${REPO_NAME}/${DEPARMENT_IMAGE}:1.2 "
               sh "docker  push  ${REPO_NAME}/${EMPLOYEE_IMAGE}:1.2 "
