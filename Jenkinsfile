@@ -80,7 +80,7 @@ pipeline {
       steps {
          script{
             withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', passwordVariable: 'DOCKERHUB-PWD', usernameVariable: 'DOCKERHUB-ID')]) {
-              sh "docker login --username "${DOCKERHUB-ID}"  --password "${DOCKERHUB-PWD}" " 
+              sh "docker login --username $DOCKERHUB-ID  --password $DOCKERHUB-PWD " 
               }
               sh "docker  push  ${REPO_NAME}/${DEPARMENT_IMAGE}:1.2 "
               sh "docker  push  ${REPO_NAME}/${EMPLOYEE_IMAGE}:1.2 "
