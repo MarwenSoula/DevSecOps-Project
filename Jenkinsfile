@@ -24,6 +24,7 @@ pipeline {
     stage ('Unit Test') {
       steps {
           sh 'mvn test -Dmaven.test.failure.ignore=true '
+          sh ' ansible all -m ping'
       }   
     }
     stage ('Secret Detection'){
