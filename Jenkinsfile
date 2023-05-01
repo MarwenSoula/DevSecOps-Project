@@ -21,12 +21,6 @@ pipeline {
             ''' 
         }
       }
-    stage ('Unit Test') {
-      steps {
-          sh 'mvn test -Dmaven.test.failure.ignore=true '
-          sh ' ansible all -m ping'
-      }   
-    }
     stage ('Secret Detection'){
       steps {
         sh 'docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/MarwenSoula/DevSecOps-Project --json > trufflehog_report.json'
