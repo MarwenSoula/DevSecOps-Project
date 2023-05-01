@@ -44,6 +44,11 @@ pipeline {
         }
       }
     }
+    stage ('Unit Test') {
+      steps {
+          sh 'mvn test -Dmaven.test.failure.ignore=true '
+      }   
+    }
     stage ('Build Maven') {
       steps {
           sh 'mvn clean package -Dmaven.test.failure.ignore=true '    
