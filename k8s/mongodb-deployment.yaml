@@ -1,11 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Statefull
 metadata:
   name: mongodb
   labels:
     app: mongodb
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: mongodb
@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: mongodb
+  serviceName: "mongodb"
     spec:
       containers:
       - name: mongodb
@@ -35,6 +36,20 @@ spec:
             secretKeyRef:
               name: mongodb
               key: database-password
+         volumeMounts:
+            - name: mongo-volume
+              mountPath: /data/db
+            - name: mongodb-config
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-volume
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: mongo-storage-class
+        resources:
+          requests:
+            storage: 1Gi
+              
 ---
 apiVersion: v1
 kind: Service
