@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: department
-        image: soulamarwen/department:
+        image: soulamarwen/department:1.2
         ports:
         - containerPort: 8080
         env:
