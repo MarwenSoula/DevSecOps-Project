@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s/v1
 kind: Ingress
 metadata:
   name: gateway-ingress
@@ -12,15 +12,8 @@ spec:
   - host: microservices.info
     http:
       paths:
-      - path: /employee
+      - path: /gateway
         backend:
-          serviceName: employee
+          serviceName: gateway
           servicePort: 8080
-      - path: /department
-        backend:
-          serviceName: department
-          servicePort: 8080
-      - path: /organization
-        backend:
-          serviceName: organization
-          servicePort: 8080
+     
