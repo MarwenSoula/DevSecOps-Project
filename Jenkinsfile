@@ -91,7 +91,9 @@ pipeline {
     }
     stage ('Kubernetes Deployment') {
       steps {
-        sh " ansible 
+        sh " ansible-playbook ansible-deploy.yaml -vv"
+      } 
+    }
       
   
   }
