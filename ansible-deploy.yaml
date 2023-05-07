@@ -1,0 +1,13 @@
+- name: pods deployment
+  hosts: k8s-env.com
+  tasks:
+  - name: Apply Department service YAML file using kubectl
+    command: kubectl apply -f department-service/k8s/deployment.yaml
+
+  - name: Apply Employee service YAML file using kubectl
+    command: kubectl apply -f employee-service/k8s/deployment.yaml
+    
+  - name: Apply Organization YAML file using kubectl
+    command: kubectl apply -f -organization-service/k8s/deployment.yaml
+    
+                                                                                                                                            
