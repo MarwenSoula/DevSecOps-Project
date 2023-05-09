@@ -81,13 +81,16 @@ pipeline {
    stage ('DockerHub Push Image') {
       steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW |   docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-          
+          sh " docker push  ${DOCKER_REPO}/${DEPARTMENT_IMAGE}:1.2"
+          sh " docker push  ${DOCKER_REPO}/${EMPLOYEE_IMAGE}:1.2 "
+          sh " docker push  ${DOCKER_REPO}/${ORGANIZATION_IMAGE}:1.2 " 
+          sh " docker push  ${DOCKER_REPO}/${GATEWAY_IMAGE}:1.2 "     
       }
      }
     
     stage ('Kubernetes Deployment') {
       steps {
-        sh " ls "
+        sh " ansible-playbook ansible-deploy --v || true"
       } 
     }
       
