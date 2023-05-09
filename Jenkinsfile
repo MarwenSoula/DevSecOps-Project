@@ -79,7 +79,7 @@ pipeline {
     }
    stage ('DockerHub Push Image') {
       steps {
-        sh " docker login --username "soulamarwen" --paswword ${DOCKERHUB_PWD} "
+          sh " docker login --username "soulamarwen" --password ${DOCKERHUB_PWD} "
       }
      }
     
