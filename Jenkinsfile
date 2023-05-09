@@ -80,7 +80,8 @@ pipeline {
    stage ('DockerHub Push Image') {
       steps {
           withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', passwordVariable: 'password', usernameVariable: 'dockerhub')]) {
-            sh " echo "${DOCKERHUB_PWD}" |docker login --username soulamarwen --password-stdin "} 
+            sh " docker login --username soulamarwen --password "Soula&20403411" "
+          } 
           
       }
      }
