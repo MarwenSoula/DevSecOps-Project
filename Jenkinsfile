@@ -9,7 +9,7 @@ pipeline {
       EMPLOYEE_IMAGE = "employee-service"
       ORGANIZATION_IMAGE = "organization-service"
       GATEWAY_IMAGE = "gateway-service"
-      DOCKER_REPO = "soulamarwen"
+      DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     
   }
 
@@ -79,9 +79,7 @@ pipeline {
     }
    stage ('DockerHub Push Image') {
       steps {
-          withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', passwordVariable: 'password', usernameVariable: 'dockerhub')]) {
-            sh " docker login --username soulamarwen --password ${password} "
-          } 
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
           
       }
      }
