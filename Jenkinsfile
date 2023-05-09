@@ -9,6 +9,7 @@ pipeline {
       EMPLOYEE_IMAGE = "employee-service"
       ORGANIZATION_IMAGE = "organization-service"
       GATEWAY_IMAGE = "gateway-service"
+      DOCKER_REPO = "soulamarwen"
       DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     
   }
