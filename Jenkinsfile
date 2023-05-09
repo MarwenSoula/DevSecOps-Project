@@ -78,15 +78,13 @@ pipeline {
     }
    stage ('DockerHub Push Image') {
       steps {
-              sh "docker login --username "soulamar"  --password ${DOCKERHUB-PWD} || true "
- 
               sh "docker  push  ${REPO_NAME}/${DEPARMENT_IMAGE}:1.2 || true "
               sh "docker  push  ${REPO_NAME}/${EMPLOYEE_IMAGE}:1.2 || true"
               sh "docker  push  ${REPO_NAME}/${ORGANIZATION_IMAGE}:1.2 || true "
               sh "docker  push  ${REPO_NAME}/${GATEWAY_IMAGE}:1.2 || true"
       }
      }
-    }
+    
     stage ('Kubernetes Deployment') {
       steps {
         sh " ansible-playbook ansible-deploy.yaml -vv || true"
