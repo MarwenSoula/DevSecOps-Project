@@ -10,7 +10,7 @@ pipeline {
       ORGANIZATION_IMAGE = "organization-service"
       GATEWAY_IMAGE = "gateway-service"
       DOCKER_REPO = "soulamarwen"
-      DOCKERHUB_PWD = "Soula&20403411"
+    
   }
 
   stages {
@@ -80,7 +80,7 @@ pipeline {
    stage ('DockerHub Push Image') {
       steps {
           withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', passwordVariable: 'password', usernameVariable: 'dockerhub')]) {
-            sh " docker login --username soulamarwen --password "Soula&20403411" "
+            sh " docker login --username soulamarwen --password Soula&20403411 "
           } 
           
       }
