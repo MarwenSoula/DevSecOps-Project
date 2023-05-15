@@ -94,7 +94,12 @@ pipeline {
         sh " ansible-playbook ansible-deploy --v || true"
       } 
     }
-      
+    stage ('DAST ZAP') {
+      steps {
+        sh 'docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http:${IPK8SCLUSTER} -g gen.conf -x ./ZAP-report.xml '
+      }
+    } 
+    
   
   }
 }
