@@ -48,4 +48,3 @@
 
     - name: play script
       command: python2 /home/defectdojo/import-script.py
-~                                                            
