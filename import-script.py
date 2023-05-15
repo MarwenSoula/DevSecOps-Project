@@ -18,8 +18,8 @@ import time
 
 
 # *************************SETUP CONNECTION SECTION***************************
-host = 'http://20.55.51.47:8080/'
-api_key = "215f209920d617ab8dc367a066a2ad8f5324e7e2"
+host = 'http://20.199.42.60:8080/'
+api_key = "d829790e43adf05890b0dbe0bfa5bafe85162037"
 key = 'Token ' + api_key
 user_id = 1 #default user
 prod_name = "Spring Boot Microservice Application" #Product Name
@@ -117,6 +117,121 @@ def upload():
     # Assignment: Finish the upload function
     eng_id = get_engagement_id(eng_name)
     files = {
+        'file': ('trivy-deparment-service.json', open('trivy-deparment-service.json','rb'), 'text/xml')  }
+    data = {
+        'scan_type':'Trivy Scan',
+        'tags':  'dep:0.1',
+        'verified': 'false',
+        'active': 'true',
+        'scan_date': start_date.strftime("%Y-%m-%d"),
+        'engagement_name': eng_name,
+        'product_name': prod_name
+            }
+    response = requests.post(host+'/api/v2/import-scan/', headers=Upload_headers, files=files, data=data)
+    print "[+] Uploading " + 'Trivy Scan' +" Response: "+ str(response.content)
+
+upload()
+
+def upload():
+    # Assignment: Finish the upload function
+    eng_id = get_engagement_id(eng_name)
+    files = {
+        'file': ('trivy-employee-service.json', open('trivy-deparment-service.json','rb'), 'text/xml')  }
+    data = {
+        'scan_type':'Trivy Scan',
+        'tags':  'emp:0.1',
+        'verified': 'false',
+        'active': 'true',
+        'scan_date': start_date.strftime("%Y-%m-%d"),
+        'engagement_name': eng_name,
+        'product_name': prod_name
+            }
+    response = requests.post(host+'/api/v2/import-scan/', headers=Upload_headers, files=files, data=data)
+    print "[+] Uploading " + 'Trivy Scan' +" Response: "+ str(response.content)
+
+upload()
+
+def upload():
+    # Assignment: Finish the upload function
+    eng_id = get_engagement_id(eng_name)
+    files = {
+        'file': ('trivy-Oraganization-service.json', open('trivy-deparment-service.json','rb'), 'text/xml')  }
+    data = {
+        'scan_type':'Trivy Scan',
+        'tags':  'org:0.1',
+        'verified': 'false',
+        'active': 'true',
+        'scan_date': start_date.strftime("%Y-%m-%d"),
+        'engagement_name': eng_name,
+        'product_name': prod_name
+            }
+    response = requests.post(host+'/api/v2/import-scan/', headers=Upload_headers, files=files, data=data)
+    print "[+] Uploading " + 'Trivy Scan' +" Response: "+ str(response.content)
+
+upload()
+
+def upload():
+    # Assignment: Finish the upload function
+    eng_id = get_engagement_id(eng_name)
+    files = {
+        'file': ('trivy-gateway-service.json', open('trivy-deparment-service.json','rb'), 'text/xml')  }
+    data = {
+        'scan_type':'Trivy Scan',
+        'tags':  'gat:0.1',
+        'verified': 'false',
+        'active': 'true',
+        'scan_date': start_date.strftime("%Y-%m-%d"),
+        'engagement_name': eng_name,
+        'product_name': prod_name
+            }
+    response = requests.post(host+'/api/v2/import-scan/', headers=Upload_headers, files=files, data=data)
+    print "[+] Uploading " + 'Trivy Scan' +" Response: "+ str(response.content)
+
+upload()
+
+def upload():
+    # Assignment: Finish the upload function
+    eng_id = get_engagement_id(eng_name)
+    files = {
+        'file': ('trufflehog_report.json', open('trufflehog_report.json','rb'), 'text/xml')  }
+    data = {
+        'scan_type':'Trufflehog Scan',
+        'tags':  '0.1',
+        'verified': 'false',
+        'active': 'true',
+        'scan_date': start_date.strftime("%Y-%m-%d"),
+        'engagement_name': eng_name,
+        'product_name': prod_name
+            }
+    response = requests.post(host+'/api/v2/import-scan/', headers=Upload_headers, files=files, data=data)
+    print "[+] Uploading " + 'Trufflehog Scan' +" Response: "+ str(response.content)
+
+upload()
+
+def upload():
+    # Assignment: Finish the upload function
+    eng_id = get_engagement_id(eng_name)
+    files = {
+        'file': ('dependency-check-report.xml', open('dependency-check-report.xml','rb'), 'text/xml')  }
+    data = {
+        'scan_type':'Dependency Check Scan',
+        'tags':  '0.1',
+        'verified': 'false',
+        'active': 'true',
+        'scan_date': start_date.strftime("%Y-%m-%d"),
+        'engagement_name': eng_name,
+        'product_name': prod_name
+            }
+    response = requests.post(host+'/api/v2/import-scan/', headers=Upload_headers, files=files, data=data)
+    print "[+] Uploading " + 'Dependency Check Scan' +" Response: "+ str(response.content)
+
+upload()
+
+
+def upload():
+    # Assignment: Finish the upload function
+    eng_id = get_engagement_id(eng_name)
+    files = {
         'file': ('ZAP-report.xml', open('ZAP-report.xml','rb'), 'text/xml')  }
     data = {
         'scan_type':'ZAP Scan',
@@ -128,30 +243,6 @@ def upload():
         'product_name': prod_name
             }
     response = requests.post(host+'/api/v2/import-scan/', headers=Upload_headers, files=files, data=data)
-    print "[+] Uploading " + 'burp sacn' +" Response: "+ str(response.content)
+    print "[+] Uploading " + 'ZAP Scan' +" Response: "+ str(response.content)
 
 upload()
-
-def upload():
-    # Assignment: Finish the upload function
-    eng_id = get_engagement_id(eng_name)
-    files = {
-        'file': open('/home/defectdojo/import/nessus-test.xml','rb'),
-    }
-    data = {
-        'scan_type':'Nessus Scan',
-        'tags':  '1.0',
-        'verified': 'false',
-        'active': 'true',
-        'scan_date': start_date.strftime("%Y-%m-%d"),
-        'engagement_name': eng_name,
-        'product_name': prod_name
-            }
-    response = requests.post(host+'/api/v2/import-scan/', headers=Upload_headers, files=files, data=data)
-    print "[+] Uploading " + 'nessus scan' +" Response: "+ str(response.content)
-upload()
-
-
-
-
-
