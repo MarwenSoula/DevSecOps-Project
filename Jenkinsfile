@@ -91,7 +91,7 @@ pipeline {
     
     stage ('Kubernetes Deployment') {
       steps {
-        sh " sleep 15 "
+        sh " sleep 90 "
       } 
     }
     stage ('DAST ZAP') {
