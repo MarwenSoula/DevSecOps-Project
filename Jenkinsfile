@@ -11,6 +11,7 @@ pipeline {
       GATEWAY_IMAGE = "gateway-service"
       DOCKER_REPO = "soulamarwen"
       DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+      IPK8SCLUSTER = "172.174.185.191"
     
   }
 
