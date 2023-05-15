@@ -1,0 +1,51 @@
+---
+- name: Import
+  hosts: defectdojo.com
+  remote_user: defectdojo
+  tasks:
+    - name: Copy Trivy department test file
+      copy:
+        src: /var/lib/jenkins/workspace/DevSecOps/trivy-deparment-service.json
+        dest: /home/defectdojo/trivy-deparment-service.json
+
+    - name: Copy Trivy employee test file
+      copy:
+        src: /var/lib/jenkins/workspace/DevSecOps/trivy-employee-service.json
+        dest: /home/defectdojo/trivy-employee-service.json
+
+    - name: Copy Trivy oragnization file
+      copy:
+        src: /var/lib/jenkins/workspace/DevSecOps/trivy-organization-service.json
+        dest: /home/defectdojo/trivy-organization-service.json
+
+    - name: Copy Trivy gateway file
+      copy:
+        src: /var/lib/jenkins/workspace/DevSecOps/trivy-gateway-service.json
+        dest: /home/defectdojo/trivy-gateway-service.json
+
+    - name: Copy OWASP Dependency scan test file
+      copy:
+        src: /var/lib/jenkins/workspace/DevSecOps/dependency-check-report.xml
+        dest: /home/defectdojo/dependency-check-report.xml
+
+    - name: Copy trufflehog test file
+      copy:
+        src: /var/lib/jenkins/workspace/DevSecOps/trufflehog_report.json
+        dest: /home/defectdojo/trufflehog_report.json
+
+    - name: Copy ZAP test file
+      copy:
+        src: /var/lib/jenkins/workspace/DevSecOps/ZAP-report.xml
+        dest: /home/defectdojo/ZAP-report.xml
+
+    - name: Copy script python file
+      copy:
+        src: /var/lib/jenkins/workspace/DevSecOps/import-script.py
+        dest: /home/defectdojo/import-script.py
+
+    - name: prepare  script
+      command: pip2 install requests
+
+    - name: play script
+      command: python2 /home/defectdojo/import-script.py
+~                                                            
