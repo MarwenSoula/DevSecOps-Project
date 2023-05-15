@@ -22,9 +22,9 @@ host = 'http://20.55.51.47:8080/'
 api_key = "215f209920d617ab8dc367a066a2ad8f5324e7e2"
 key = 'Token ' + api_key
 user_id = 1 #default user
-prod_name = "Logibec Canada" #Product Name
-prod_desc = "Logibec Canada Vuln Management"
-eng_name = "Logibec_Engagement" #Engagement Name
+prod_name = "Spring Boot Microservice Application" #Product Name
+prod_desc = "Fisrt test"
+eng_name = "Engagement_Spring_Boot" #Engagement Name
 start_date = datetime.now()
 end_date = start_date+timedelta(days=180)
 
@@ -117,9 +117,9 @@ def upload():
     # Assignment: Finish the upload function
     eng_id = get_engagement_id(eng_name)
     files = {
-        'file': ('burp-test.xml', open('burp-test.xml','rb'), 'text/xml')  }
+        'file': ('ZAP-report.xml', open('ZAP-report.xml','rb'), 'text/xml')  }
     data = {
-        'scan_type':'Burp Scan',
+        'scan_type':'ZAP Scan',
         'tags':  '0.1',
         'verified': 'false',
         'active': 'true',
