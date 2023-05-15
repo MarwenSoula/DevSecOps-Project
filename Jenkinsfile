@@ -91,7 +91,7 @@ pipeline {
     
     stage ('Kubernetes Deployment') {
       steps {
-        sh " ansible-playbook ansible-deploy.yaml --v || true"
+        sh " sleep 15 "
       } 
     }
     stage ('DAST ZAP') {
