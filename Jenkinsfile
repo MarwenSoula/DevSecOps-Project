@@ -91,7 +91,7 @@ pipeline {
     
     stage ('Kubernetes Deployment') {
       steps {
-        sh " ansible-playbook ansible-deploy --v || true"
+        sh " ansible-playbook ansible-deploy.yaml --v || true"
       } 
     }
     stage ('DAST ZAP') {
@@ -99,7 +99,11 @@ pipeline {
         sh 'docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://${IPK8SCLUSTER} -g gen.conf -x ./ZAP-report.xml '
       }
     } 
-    
+    stage ('DefectDojo Import') {
+      steps {
+        sh " ansible-playbook ansible-import.yaml --v"
+      } 
+    }
   
   }
 }
