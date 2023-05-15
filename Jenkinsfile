@@ -101,7 +101,7 @@ pipeline {
     } 
     stage ('DefectDojo Import') {
       steps {
-        sh " ansible-playbook ansible-import.yaml --v || true"
+        sh " sleep 47"
       } 
     }
   
