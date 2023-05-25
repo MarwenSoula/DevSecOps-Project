@@ -51,7 +51,7 @@ pipeline {
           sh 'mvn clean package -Dmaven.test.failure.ignore=true '    
        }
     }
-   stage ('Docker Images Build ') {
+   stage ('Docker Build ') {
      steps {
        script{
          sh "docker rmi ${DOCKER_REPO}/${DEPARTMENT_IMAGE}:1.2 || true "
