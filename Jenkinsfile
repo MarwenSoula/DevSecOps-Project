@@ -91,7 +91,7 @@ pipeline {
     
     stage ('Kubernetes Deployment') {
       steps {
-        sh " sleep 90 "
+        sh ""
       } 
     }
     stage ('DAST ZAP') {
@@ -101,7 +101,7 @@ pipeline {
     } 
     stage ('DefectDojo Import') {
       steps {
-        sh " sleep 47"
+        sh " "
       } 
     }
   
